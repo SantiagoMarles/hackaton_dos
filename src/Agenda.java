@@ -41,7 +41,7 @@ public class Agenda {
         return scanner;
     }
 
-    // Método principal para iniciar la agenda y mostrar el menú interactivo.
+    // Metodo principal para iniciar la agenda y mostrar el menú interactivo.
     public void iniciar() {
         int opcion;  // Opción seleccionada por el usuario.
         do {
@@ -84,6 +84,17 @@ public class Agenda {
                         JOptionPane.showMessageDialog(null, "El contacto " + nombre + " " + apellido + " existe en la agenda.");
                     } else {
                         JOptionPane.showMessageDialog(null, "El contacto " + nombre + " " + apellido + " no se encuentra en la agenda.");
+                        int respuesta = JOptionPane.showConfirmDialog(null, "¿Deseas agregarlo?", "Confirmación", JOptionPane.YES_NO_OPTION);
+
+                        if (respuesta == JOptionPane.YES_OPTION) {
+                            // Si la respuesta es sí, se le solicita al usuario el teléfono para agregar el contacto
+                            String telefono = JOptionPane.showInputDialog("Introduce el número de teléfono del contacto: ");
+                            Contacto nuevoContacto = new Contacto(nombre, apellido, telefono);
+                            anadirContacto(nuevoContacto);  // Llamar al método para añadir el nuevo contacto
+                        } else {
+                            JOptionPane.showMessageDialog(null, "No se ha añadido el contacto.");
+                        }
+
                     }
                 }
                 case 3 -> listarContactos();  // Mostrar lista de contactos
@@ -118,7 +129,7 @@ public class Agenda {
         } while (opcion != 9);  // Repetir hasta que el usuario decida salir
     }
 
-    // Método para añadir un contacto a la agenda
+    // Metodo para añadir un contacto a la agenda
     public void anadirContacto(Contacto contacto) {
         if (listaDeContactos.size() >= tamano) {
             System.out.println("La agenda está llena. No se puede añadir más contactos.");

@@ -39,7 +39,7 @@ public class Contacto {
         this.telefono = telefono;
     }
 
-    // Sobreescritura del método equals para comparar dos objetos Contacto correctamente
+    // Sobreescritura del metodo equals para comparar dos objetos Contacto correctamente
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;  // Si el objeto es el mismo, retornamos true
@@ -49,20 +49,20 @@ public class Contacto {
         return nombre.equalsIgnoreCase(contacto.nombre) && apellido.equalsIgnoreCase(contacto.apellido);
     }
 
-    // Sobreescritura del método hashCode para generar un código hash consistente con equals
+    // Sobreescritura del metodo hashCode para generar un código hash consistente con equals
     @Override
     public int hashCode() {
         // Usamos los atributos 'nombre' y 'apellido' en minúsculas para generar el hash
         return Objects.hash(nombre.toLowerCase(), apellido.toLowerCase());
     }
 
-    // Sobreescritura del método toString para obtener una representación en formato String del objeto Contacto
+    // Sobreescritura del metodo toString para obtener una representación en formato String del objeto Contacto
     @Override
     public String toString() {
         // Retorna una cadena con los valores de los atributos de Contacto
         return
-                "nombre: " + nombre + '\'' +
-                ", apellido: " + apellido + '\'' +
-                ", telefono: " + telefono + '\'' ;
+                "nombre: " + nombre + '\n' +
+                ", apellido: " + apellido + '\n' +
+                ", telefono: " + telefono + '\n' ;
     }
 }
