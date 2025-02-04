@@ -2,17 +2,18 @@ import java.util.Objects;
 
 public class Contacto {
 
-    private String nombre;
-    private String apellido;
-    private String telefono;
+    private String nombre;       // Nombre del contacto
+    private String apellido;     // Apellido del contacto
+    private String telefono;     // Teléfono del contacto
 
+    // Constructor que inicializa los campos de la clase Contacto
     public Contacto(String nombre, String apellido, String telefono) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.telefono = telefono;
     }
 
-    // Getters y setters
+    // Getters y setters para acceder y modificar los atributos
 
     public String getNombre() {
         return nombre;
@@ -38,25 +39,30 @@ public class Contacto {
         this.telefono = telefono;
     }
 
-    // Sobreescritura de equals y hashCode para comparar Contactos correctamente
+    // Sobreescritura del método equals para comparar dos objetos Contacto correctamente
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Contacto contacto = (Contacto) o;
+        if (this == o) return true;  // Si el objeto es el mismo, retornamos true
+        if (o == null || getClass() != o.getClass()) return false; // Si el objeto es null o no es del tipo correcto, retornamos false
+        Contacto contacto = (Contacto) o; // Hacemos un casting del objeto a Contacto
+        // Comparamos los nombres y apellidos, ignorando mayúsculas/minúsculas
         return nombre.equalsIgnoreCase(contacto.nombre) && apellido.equalsIgnoreCase(contacto.apellido);
     }
 
+    // Sobreescritura del método hashCode para generar un código hash consistente con equals
     @Override
     public int hashCode() {
+        // Usamos los atributos 'nombre' y 'apellido' en minúsculas para generar el hash
         return Objects.hash(nombre.toLowerCase(), apellido.toLowerCase());
     }
 
+    // Sobreescritura del método toString para obtener una representación en formato String del objeto Contacto
     @Override
     public String toString() {
-        return  "nombre='" + nombre + '\'' +
-                ", apellido='" + apellido + '\'' +
-                ", telefono='" + telefono + '\'';
+        // Retorna una cadena con los valores de los atributos de Contacto
+        return
+                "nombre: " + nombre + '\'' +
+                ", apellido: " + apellido + '\'' +
+                ", telefono: " + telefono + '\'' ;
     }
 }
-
