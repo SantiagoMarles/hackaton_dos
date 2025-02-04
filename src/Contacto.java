@@ -1,18 +1,18 @@
+import java.util.Objects;
+
 public class Contacto {
 
-private String nombre;
-private String apellido;
-private String telefono;
-//private Integer id;
-
-    public Contacto() {
-    }
+    private String nombre;
+    private String apellido;
+    private String telefono;
 
     public Contacto(String nombre, String apellido, String telefono) {
         this.nombre = nombre;
-        this.telefono = telefono;
         this.apellido = apellido;
+        this.telefono = telefono;
     }
+
+    // Getters y setters
 
     public String getNombre() {
         return nombre;
@@ -37,4 +37,26 @@ private String telefono;
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
+
+    // Sobreescritura de equals y hashCode para comparar Contactos correctamente
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Contacto contacto = (Contacto) o;
+        return nombre.equalsIgnoreCase(contacto.nombre) && apellido.equalsIgnoreCase(contacto.apellido);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nombre.toLowerCase(), apellido.toLowerCase());
+    }
+
+    @Override
+    public String toString() {
+        return  "nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", telefono='" + telefono + '\'';
+    }
 }
+
